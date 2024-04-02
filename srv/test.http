@@ -1,0 +1,93 @@
+GET http://localhost:4004/CatalogService/
+
+### Read Service metadata
+GET http://localhost:4004/CatalogService/$metadata
+
+### Read Top 2 Employee
+GET http://localhost:4004/CatalogService/EmployeeSet?$top=2
+
+### Read Purchase Orders
+GET http://localhost:4004/CatalogService/POs
+
+### Read Purchase Orders along with Items and Partner
+GET http://localhost:4004/CatalogService/POs?$top=2&$expand=Items,PARTNER_GUID
+
+### Create New Employee
+POST http://localhost:4004/CatalogService/EmployeeSet
+Content-Type: application/json
+
+{
+    "validFrom": "2023-12-31T18:30:00.000Z",
+    "validTo": "9999-12-30T18:30:00.000Z",
+    "nameFirst": "Mr",
+    "nameMiddle": "Nitin",
+    "nameLast": "Kumar",
+    "nameInitials": "Guru",
+    "sex": "M",
+    "language": "E",
+    "phoneNumber": "9091456210",
+    "email": "alam1@gmail.com",
+    "loginName": "alam10",
+    "currency_code": "INR",
+    "salaryAmount": 5000.2,
+    "accountNumber": "546315",
+    "bankId": "452",
+    "bankName": "HDFC"
+}
+
+### Read Single Employee Which was just created.
+GET http://localhost:4004/CatalogService/EmployeeSet/aaf3c3f5-c718-4c03-83ec-8f79e7671390
+
+###Update the Salary for the Employee
+PATCH http://localhost:4004/CatalogService/EmployeeSet/aaf3c3f5-c718-4c03-83ec-8f79e7671390
+Content-Type: application/json;IEEE754Compatible=true
+
+{
+    "nameFirst": "Nitin",
+  "nameMiddle": "Kumar",
+  "nameLast": "BABA", 
+  "validFrom": "2023-12-31T18:30:00.000Z",
+  "validTo": "9999-12-30T18:30:00.000Z",
+  "currency_code": "INR",
+  "salaryAmount": "11662000.2"
+}
+
+### Read ReadEmployeeSrv
+GET http://localhost:4004/odata/v4/mysrvdemo/ReadEmployeeSrv/aaf3c3f5-c718-4c03-83ec-8f79e7671392 
+
+### Create Employee with custom handler
+POST http://localhost:4004/odata/v4/mysrvdemo/InsertEmployeeSrv
+Content-Type: application/json;IEEE754Compatible=true
+
+{
+    "ID": "aaf3c3f5-c718-4c03-83ec-8f79e7671392",
+    "validFrom": "2023-12-31T18:30:00.000Z",
+    "validTo": "9999-12-30T18:30:00.000Z",
+    "nameFirst": "Mr",
+    "nameMiddle": "Nitin",
+    "nameLast": "Kumar",
+    "nameInitials": "Guru",
+    "sex": "M",
+    "language": "E",
+    "phoneNumber": "9091456210",
+    "email": "alam1@gmail.com",
+    "loginName": "alam10",
+    "currency_code": "INR",
+    "salaryAmount": 5000.2,
+    "accountNumber": "546315",
+    "bankId": "452",
+    "bankName": "HDFC"
+}
+
+### Update Employee with custom handler
+PATCH http://localhost:4004/odata/v4/mysrvdemo/UpdateEmployeeSrv/aaf3c3f5-c718-4c03-83ec-8f79e7671392
+Content-Type: application/json;IEEE754Compatible=true
+
+{
+    "ID": "aaf3c3f5-c718-4c03-83ec-8f79e7671392",
+    "nameFirst": "Miss",
+    "nameLast": "Kriti"    
+}
+
+### Delete ReadEmployeeSrv
+DELETE http://localhost:4004/odata/v4/mysrvdemo/DeleteEmployeeSrv/aaf3c3f5-c718-4c03-83ec-8f79e7671392 
