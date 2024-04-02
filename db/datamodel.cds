@@ -101,7 +101,8 @@ context transaction {
         //TAX_AMOUNT: Decimal(15,2);
         LIFECYCLE_STATUS: String(1);
         OVERALL_STATUS: String(1);
-        Items: Association to many poitems on Items.PARENT_KEY = $self
+        Items: Association to many poitems on Items.PARENT_KEY = $self;
+        NOTE: String(256);
     }
 
     entity poitems: common.Amount{

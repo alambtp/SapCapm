@@ -8,14 +8,18 @@ service CatalogService@(path: '/CatalogService') {
     @readonly
     entity BPSet as projection on master.businesspartner;
 
+    // http://localhost:4004/CatalogService/POs
+    // http://localhost:4004/CatalogService/POs('5P29FC40CA471067B31D00DD0106DA01')?$expand=Items
     entity POs @( 
         title: '{i18n>poHeader}') as projection on transaction.purchaseorder{
             *,
+            round(GROSS_AMOUNT,2) as GROSS_AMOUNT : Decimal(15,2),
             Items: redirected to POItems
+        }actions{
+            function largestOrder() returns array of POs;
+            action boost();
         }
-        // http://localhost:4004/CatalogService/POs
-        // http://localhost:4004/CatalogService/POs('5P29FC40CA471067B31D00DD0106DA01')?$expand=Items
-
+       
 
         entity POItems @( title: '{i18n>poItems}' )
          as projection on transaction.poitems{

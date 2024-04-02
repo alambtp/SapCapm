@@ -91,3 +91,40 @@ Content-Type: application/json;IEEE754Compatible=true
 
 ### Delete ReadEmployeeSrv
 DELETE http://localhost:4004/odata/v4/mysrvdemo/DeleteEmployeeSrv/aaf3c3f5-c718-4c03-83ec-8f79e7671392 
+
+//////////////////////////////////
+### Get a Random PO
+GET http://localhost:4004/CatalogService/POs?$top=5
+
+###Calling action for the Entity
+POST http://localhost:4004/CatalogService/POs('5P29FC40CA471067B31D00DD0106DA01')/CatalogService.boost
+Content-Type: application/json
+
+{}
+
+###Read the Largest Order in system
+GET http://localhost:4004/CatalogService/POs('5P29FC40CA471067B31D00DD0106DA01')/CatalogService.largestOrder()
+
+
+/////////////////////////////////V2 Services \\\\\\\\\\\\\\\\\\\\\\\
+### Services End Point by prefixing /v2
+GET http://localhost:4004/v2/CatalogService
+
+### Read Metadata
+GET http://localhost:4004/v2/CatalogService/$metadata
+
+### V2 Odata Employee
+GET http://localhost:4004/v2/CatalogService/EmployeeSet
+
+###Read the Po Order in system
+GET http://localhost:4004/CatalogService/POs('5P29FC40CA471067B31D00DD0106DA01')
+
+###Calling Custom Action for the Entity
+POST http://localhost:4004/v2/CatalogService/POs_boost?NODE_KEY=5P29FC40CA471067B31D00DD0106DA01
+Content-Type: application/json
+
+{}
+
+### Calling Function Using V2
+GET http://localhost:4004/v2/CatalogService/POs_largestOrder?NODE_KEY=5P29FC40CA471067B31D00DD0106DA01
+
