@@ -91,8 +91,8 @@ context master {
 }
 
 context transaction {
-    entity purchaseorder: common.Amount{
-        key NODE_KEY: Guid;
+    entity purchaseorder: common.Amount, cuid{
+        //key NODE_KEY: Guid;
         PO_ID: String(24);
         PARTNER_GUID: Association to master.businesspartner;
         //CURRRENCY_CODE: String(4);
@@ -105,8 +105,8 @@ context transaction {
         NOTE: String(256);
     }
 
-    entity poitems: common.Amount{
-        key NODE_KEY: Guid;
+    entity poitems: common.Amount, cuid{
+        // key NODE_KEY: Guid;
         PARENT_KEY: Association to purchaseorder;
         PO_ITEM_POS: Integer;
         PRODUCT_GUID: Association to master.product;

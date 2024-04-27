@@ -146,7 +146,7 @@ annotate CatalogService.POItems with @(
             TypeNamePlural : 'PO Items',
             Title: {
                 Label: '{i18n>POID}',
-                Value: NODE_KEY
+                Value: ID
             },
             Description: {
                 Label: '{i18n>DESC}',
