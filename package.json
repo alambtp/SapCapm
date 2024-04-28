@@ -6,12 +6,16 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@sap/approuter": "^16.4.1",
     "@sap/cds": "^7",
+    "@sap/cds-hana": "^2",
     "@sap/cds-odata-v2-adapter-proxy": "^1.9.21",
-    "express": "^4"
+    "express": "^4",
+    "hdb": "^0.19.8"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^7",
     "@sap/eslint-plugin-ui5-jsdocs": "^2.0.5",
     "@sap/ux-specification": "^1.120.8",
     "@sapui5/ts-types": "^1.92.2",
@@ -29,5 +33,14 @@
   "sapux": [
     "app/purchaseorder",
     "app/purchaseorder"
-  ]
+  ],
+  "cds": {
+    "hana": {
+      "deploy-format": "hdbtable"
+    },
+    "requires": {
+      "db": "hana",
+      "auth": "mocked"
+    }
+  }
 }

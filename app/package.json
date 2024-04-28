@@ -9,18 +9,21 @@
     "sapui5"
   ],
   "main": "webapp/index.html",
-  "dependencies": {},
+  "dependencies": {
+    "@sap/approuter": "^16.4.1"
+  },
   "devDependencies": {
-    "@ui5/cli": "^3.0.0",
-    "@sap/ux-ui5-tooling": "1",
-    "@sap/ux-specification": "UI5-1.123",
-    "eslint": "8.57.0",
     "@sap/eslint-plugin-ui5-jsdocs": "2.0.5",
-    "@sapui5/ts-types": "~1.123.0"
+    "@sap/ux-specification": "UI5-1.123",
+    "@sap/ux-ui5-tooling": "1",
+    "@sapui5/ts-types": "~1.123.0",
+    "@ui5/cli": "^3.0.0",
+    "eslint": "8.57.0"
   },
   "scripts": {
     "build": "ui5 build --config=ui5.yaml --clean-dest --dest dist",
     "deploy": "fiori verify",
-    "deploy-config": "fiori add deploy-config"
+    "deploy-config": "fiori add deploy-config",
+    "start": "node node_modules/@sap/approuter/approuter.js"
   }
 }
