@@ -12,7 +12,7 @@ context CDSViews {
                 PARTNER_GUID.BP_ID                as ![ParterId],
                 PARTNER_GUID.COMPANY_NAME         as ![CompanyName],
                 GROSS_AMOUNT                      as ![POGrossAmount],
-                CURRENCY_CODE                     as ![POCurrencyCode],
+                Currency.code                     as ![POCurrencyCode],
                 LIFECYCLE_STATUS                  as ![POStatus],
             key Items.PO_ITEM_POS                 as ![ItemPosition],
                 Items.PRODUCT_GUID.PRODUCT_ID     as ![ProductId],
@@ -22,7 +22,7 @@ context CDSViews {
                 Items.GROSS_AMOUNT                as ![GrossAmount],
                 Items.NET_AMOUNT                  as ![NetAmount],
                 Items.TAX_AMOUNT                  as ![TaxAmount],
-                Items.CURRENCY_CODE               as ![CurrencyCode]
+                Items.Currency.code               as ![CurrencyCode]
         }
 
     define view ProductValueHelp as
@@ -51,7 +51,7 @@ context CDSViews {
         select from transaction.poitems{
             PARENT_KEY.PARTNER_GUID.NODE_KEY as![Partner],
             PRODUCT_GUID.NODE_KEY as ![ProductId],
-            CURRENCY_CODE as ![CurrencyCode],
+            Currency.code as ![CurrencyCode],
             GROSS_AMOUNT as ![GrossAmount],
             NET_AMOUNT as ![NetAmount],
             TAX_AMOUNT as ![TaxAmount],

@@ -23,7 +23,7 @@ annotate service.POs with @(
             },
             {
                 $Type : 'UI.DataField',
-                Value : CURRENCY_CODE,
+                Value : Currency.code,
             },{
                 $Type : 'UI.DataField',
                 Value : PARTNER_GUID.COMPANY_NAME,
@@ -97,7 +97,7 @@ annotate service.POs with @(
                 },{
                     $Type : 'UI.DataField',
                     Label: '{i18n>CURRENCY_CODE}',
-                    Value : CURRENCY_CODE,
+                    Value : Currency.code,
                 },{
                     $Type : 'UI.DataField',
                     Label: '{i18n>LIFECYCLE_STATUS}',
@@ -137,7 +137,7 @@ annotate CatalogService.POItems with @(
             },{
                 $Type : 'UI.DataField',
                 Label: '{i18n>CURRENCY_CODE}',
-                Value : CURRENCY_CODE,
+                Value : Currency.code,
             },
         ],
         HeaderInfo  : {
@@ -194,7 +194,7 @@ annotate CatalogService.POItems with @(
                 },{
                     $Type : 'UI.DataField',
                     Label: '{i18n>CURRENCY_CODE}',
-                    Value : CURRENCY_CODE,
+                    Value : Currency.code,
                 },
             ]            
         },
@@ -244,7 +244,7 @@ annotate CatalogService.ProductSet with @(
     }
 );
 
-
+// Partner Guid F4 Help
 annotate service.POs with {
     PARTNER_GUID @Common.ValueList : {
         $Type : 'Common.ValueListType',
@@ -266,10 +266,31 @@ annotate service.POs with {
             {
                 $Type : 'Common.ValueListParameterDisplayOnly',
                 ValueListProperty : 'PHONE_NUMBER',
+            },{
+                $Type : 'Common.ValueListParameterDisplayOnly',
+                ValueListProperty : 'COMPANY_NAME',
+            },
+        ],
+    }
+};
+
+// Product Guid F4 Help
+annotate service.POItems with {
+    PRODUCT_GUID @Common.ValueList : {
+        $Type : 'Common.ValueListType',
+        CollectionPath : 'ProductSet',
+        Parameters : [
+            {
+                $Type : 'Common.ValueListParameterInOut',
+                LocalDataProperty : PRODUCT_GUID_NODE_KEY,
+                ValueListProperty : 'NODE_KEY',
+            },{
+                $Type : 'Common.ValueListParameterDisplayOnly',
+                ValueListProperty : 'PRODUCT_ID',
             },
             {
                 $Type : 'Common.ValueListParameterDisplayOnly',
-                ValueListProperty : 'FAX_NUMBER',
+                ValueListProperty : 'DESCRIPTION',
             },
         ],
     }

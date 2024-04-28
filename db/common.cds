@@ -21,7 +21,7 @@ type AmountT : Decimal(15,2)@(
 );
 
 abstract entity Amount {
-    CURRENCY_CODE: String(4);
+    Currency: Currency;
     GROSS_AMOUNT : AmountT;
     NET_AMOUNT   : AmountT;
     TAX_AMOUNT   : AmountT;
