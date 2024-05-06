@@ -1,7 +1,15 @@
 using { rustam.db.master, rustam.db.transaction } from '../db/datamodel';
-service CatalogService@(path: '/CatalogService') {
+service CatalogService@(path: '/CatalogService')
+        @(requires: 'authenticated-user') {
     @Capabilities: { Insertable,Updatable : true,Deletable}
-    entity EmployeeSet as projection on master.employees;
+    entity EmployeeSet @(restrict:[
+        {
+            grant: ['READ'],
+            to: 'Viewer',
+            where: 'bankName = $user.BankName'
+        }
+    ]) 
+     as projection on master.employees;
     entity AddressSet as projection on master.address;
     entity ProductSet as projection on master.product;
     // entity ProductTextSet as projection on master.prodtext;

@@ -1,0 +1,51 @@
+{
+    "xsappname": "capm2",
+    "tenant-mode": "dedicated",
+    "scopes": [
+      {
+        "name": "$XSAPPNAME.Viewer",
+        "description": "Read Permissions."
+      },
+      {
+        "name": "$XSAPPNAME.Admin",
+        "description": "Admin permissions."
+      }
+    ],
+    "attributes":[
+       {
+        "name": "BankName",
+        "description": "BankName",
+        "valueType": "string"
+       } 
+    ],
+    "role-templates": [
+      {
+        "name": "Viewer",
+        "description": "View Data",
+        "attribute-references":[
+            {
+                "name": "BankName"
+            }
+        ],
+        "scope-references": [
+          "$XSAPPNAME.Viewer"
+        ]
+      },
+      {
+        "name": "Admin",
+        "description": "View Sensitive Data",
+        "scope-references": [
+          "$XSAPPNAME.Admin"
+        ]
+      }
+    ],
+    "role-collections": [
+      {
+        "name": "app_Administrator",
+        "description": "Administrator (read all)",
+        "role-template-references": [
+          "$XSAPPNAME.Admin"
+        ]
+      }
+    ]
+  }

@@ -1,6 +1,6 @@
 _schema-version: '3.1'
 ID: CAPM2
-version: 1.0.0
+version: 1.2.0
 description: A simple CAP project.
 parameters:
   enable-parallel-deployments: true
@@ -36,7 +36,7 @@ modules:
           name: srv-api
           strictSSL: true
           forwardAuthToken: true
-          url: ~{srv-url}
+          url: '~{srv-url}'
   - name: CAPM2-db-deployer
     type: hdb
     path: gen/db
@@ -50,3 +50,10 @@ resources:
     parameters:
       service: hana
       service-plan: hdi-shared
+  - name: CAPM2-xsuaa
+    type: org.cloudfoundry.managed-service
+    description: Automatically created by CF
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json

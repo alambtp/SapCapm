@@ -4,7 +4,7 @@
   "routes": [ 
     { 
       "source": "^/purchaseorder/webapp/(.*)$", 
-      "target": "$1", 
+      "target": "$1",
       "localDir": "purchaseorder/webapp/" 
     }, 
     { 
